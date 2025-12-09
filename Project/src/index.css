@@ -1,0 +1,365 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ============================
+   ✅ CSS CUSTOM PROPERTIES
+============================ */
+@property --progress {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --card-rotation {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+
+/* ============================
+   ✅ RESET & ROOT SETUP
+============================ */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at top, #060818, #02020f);
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* ============================
+   ✅ PARTICLES BACKGROUND
+============================ */
+#particles-app {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#particles-app canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.5));
+}
+
+
+/* ============================
+   ✅ HERO SECTION ANIMATION
+============================ */
+.hero-section {
+  animation: heroFadeIn 1s ease-out;
+  animation-timeline: scroll(root);
+  animation-range: 0% 30%;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+}
+
+
+/* ============================
+   ✅ FEATURE CARD
+============================ */
+.feature-card {
+  animation: cardSlideUp 1ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 40%;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: #a855f7;
+  transform: translateY(-10px) scale(1.02);
+}
+
+@keyframes cardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* ============================
+   ✅ STAT ITEM
+============================ */
+.stat-item {
+  animation: statAppear 1ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 30% cover 50%;
+}
+
+@keyframes statAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* ============================
+   ✅ PRICING CARD
+============================ */
+.pricing-card {
+  animation: pricingFloat 1ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 45%;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-12px) scale(1.05);
+}
+
+@keyframes pricingFloat {
+  from {
+    opacity: 0;
+    transform: translateY(80px) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+
+/* ============================
+   ✅ TESTIMONIAL CARD
+============================ */
+.testimonial-card {
+  animation: testimonialSlide 1ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 25% cover 50%;
+}
+
+@keyframes testimonialSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+
+/* ============================
+   ✅ CTA SECTION
+============================ */
+.cta-section {
+  animation: ctaPulse 1ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 30% cover 60%;
+}
+
+@keyframes ctaPulse {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ============================
+   ✅ WORKOUT IMAGE
+============================ */
+.workout-image {
+  animation: imageZoom 1ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 50%;
+}
+
+@keyframes imageZoom {
+  from {
+    transform: scale(1.3);
+    filter: brightness(0.5);
+  }
+  to {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+
+/* ============================
+   ✅ PROGRESS BAR
+============================ */
+.progress-bar {
+  animation: progressFill 1ms linear forwards;
+  animation-timeline: view();
+  animation-range: entry 40% cover 70%;
+}
+
+@keyframes progressFill {
+  from {
+    --progress: 0;
+  }
+  to {
+    --progress: 1;
+  }
+}
+
+
+/* ============================
+   ✅ GRADIENT TEXT
+============================ */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+/* ============================
+   ✅ FEATURE ICON
+============================ */
+.feature-icon {
+  animation: iconRotate 1ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 30% cover 60%;
+}
+
+@keyframes iconRotate {
+  from {
+    transform: rotate(-180deg) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* ============================
+   ✅ SPLIT REVEAL
+============================ */
+.split-reveal {
+  animation: splitReveal 1ms ease-out both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 50%;
+}
+
+@keyframes splitReveal {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+
+/* ============================
+   ✅ HERO SECTION STL
+============================ */
+#hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  padding: 20px;
+}
+
+#hero h1 {
+  --fontSize: 72px;
+  --lineHeight: 90px;
+
+  font-size: var(--fontSize);
+  line-height: var(--lineHeight);
+  font-weight: 900;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+
+  background: linear-gradient(135deg, #00f2ff, #ff00c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 10px rgba(0, 255, 255, 0.4),
+    0 0 40px rgba(0, 0, 0, 0.8);
+
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+#hero a {
+  margin-top: 25px;
+  padding: 12px 26px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #00f2ff, #7c2ae8);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+  transition: all 0.35s ease;
+}
+
+#hero a:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 35px rgba(124, 42, 232, 0.8);
+}
+
+@keyframes glowPulse {
+  from {
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4));
+  }
+  to {
+    filter: drop-shadow(0 0 25px rgba(255, 0, 200, 0.8));
+  }
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    --fontSize: 42px;
+    --lineHeight: 54px;
+    letter-spacing: 3px;
+  }
+}
