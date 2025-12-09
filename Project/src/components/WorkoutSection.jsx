@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dumbbell } from 'lucide-react';
 import workout from '../assets/g2.jpg';
 
 

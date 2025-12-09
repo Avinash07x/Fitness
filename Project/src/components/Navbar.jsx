@@ -10,7 +10,6 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Dumbbell className="text-black w-8 h-8" />
-            <h1 className="ml-2 text-2xl font-bold text-black">EliteFit</h1>
           </div>
 
           {/* Menu Items */}
