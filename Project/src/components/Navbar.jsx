@@ -1,5 +1,6 @@
 import React from "react";
 import { Dumbbell } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,15 +9,15 @@ const Navbar = () => {
         <div className="flex justify-between h-16 items-center">
 
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
+          <Link to="/" className="flex items-center">
             <Dumbbell className="text-black w-8 h-8" />
-          </div>
+          </Link>
 
           {/* Menu Items */}
           <div className="hidden m-auto md:flex space-x-6">
-            <a href="/" className="text-gray-800 font-semibold hover:text-blue-500 transition">
+            <Link to="/" className="text-gray-800 font-semibold hover:text-blue-500 transition">
               HOME
-            </a>
+            </Link>
             <a href="#plan" className="text-gray-800 font-semibold hover:text-blue-500 transition">
               PLANS
             </a>
@@ -30,12 +31,12 @@ const Navbar = () => {
 
           {/* Right Side Button */}
           <div className="flex items-center space-x-4">
-            <a
-              href="/getstarted"
+            <Link
+              to="/getstarted"
               className="bg-black text-white px-5 py-2 rounded-full font-medium hover:bg-gray-800 transition"
             >
               GET STARTED
-            </a>
+            </Link>
           </div>
         </div>
       </div>
