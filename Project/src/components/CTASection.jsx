@@ -1,18 +1,65 @@
-import React from 'react';
-import ctav from '../assets/v.mp4';
+import React from "react";
+import { Link } from "react-router-dom";
+import ctav from "../assets/v.mp4";
 
 function CTASection() {
   return (
-    <>
-      <style>{`
-        .cta-section {
-          animation: ctaPulse 0.8s ease-out forwards;
-        }
+    <section
+      className="
+        relative
+        min-h-[80vh]
+        flex
+        items-center
+        justify-center
+        overflow-hidden
+      "
+    >
+      {/* VIDEO BACKGROUND */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src={ctav}
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
 
-        @keyframes ctaPulse {
+      {/* DARK OVERLAY */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+
+      {/* CONTENT */}
+      <div
+        className="
+          relative
+          z-10
+          max-w-4xl
+          px-6
+          text-center
+          text-white
+          animate-[fadeInScale_0.8s_ease-out_forwards]
+        "
+      >
+        <h2 className="text-4xl md:text-6xl font-extrabold mb-6">
+          Ready to Transform?
+        </h2>
+
+        <p className="text-gray-300 text-lg md:text-xl mb-10">
+          Join thousands of members already pushing limits and
+          transforming their bodies.
+        </p>
+
+        <Link to="/getstarted" className="px-8 py-4 bg-red-500 hover:bg-red-600 text-white text-sm tracking-widest uppercase transition">
+          Start Training
+        </Link>
+
+      </div>
+
+      {/* LOCAL KEYFRAMES */}
+      <style>{`
+        @keyframes fadeInScale {
           from {
             opacity: 0;
-            transform: scale(0.8);
+            transform: scale(0.85);
           }
           to {
             opacity: 1;
@@ -20,11 +67,7 @@ function CTASection() {
           }
         }
 
-        .cta-button {
-          animation: buttonFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes buttonFloat {
+        @keyframes float {
           0%, 100% {
             transform: translateY(0);
           }
@@ -33,34 +76,7 @@ function CTASection() {
           }
         }
       `}</style>
-
-      <section className="relative py-32 px-4 overflow-hidden">
-        {/* Video Background */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src={ctav}
-          autoPlay
-          muted
-          loop
-        />
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-gray-950/50 to-blue-900/50"></div>
-
-        {/* Content */}
-        <div className="cta-section relative z-10 max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-            Ready to Transform?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Join thousands of members who are already achieving their fitness goals
-          </p>
-          <button className="cta-button bg-gradient-to-r from-purple-600 to-blue-600 text-white px-16 py-5 rounded-full text-xl font-semibold hover:scale-105 transition-transform duration-300 shadow-2xl">
-            GET STARTED TRIAL
-          </button>
-        </div>
-      </section>
-    </>
+    </section>
   );
 }
 

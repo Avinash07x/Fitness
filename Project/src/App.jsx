@@ -7,7 +7,7 @@ import HelpCenter from "./page/HelpCenter";
 import PrivacyPolicy from "./page/PrivacyPolicy";
 import TermsAndConditions from "./page/TermsAndConditions";
 import GetStarted from "./page/GetStarted";
-import GetStartedNow from "./page/GetStartedNow";
+import Transformations from "./page/Transformations";
 ;
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/getstarted" element={<GetStarted />} />
-          <Route path="/getstartednow" element={<GetStartedNow />} />
+          <Route path="/transformations" element={<Transformations />} />
         </Routes>
         <Footer />
       </BrowserRouter>

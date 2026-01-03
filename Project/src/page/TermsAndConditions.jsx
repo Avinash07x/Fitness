@@ -2,168 +2,189 @@ import React from "react";
 
 function TermsAndConditions() {
   return (
-    <>
-      <style>{`
-        .animated-bg {
-          background: linear-gradient(270deg, #ffffff, #c8d9daff , #96b0b7ac , #4e797a);
-          background-size: 800% 800%;
-          animation: gradientMove 20s ease infinite;
-        }
+    <section
+      className="
+        min-h-screen
+        bg-[linear-gradient(270deg,#000000,#0f1115,#111827,#000000)]
+        bg-600
+        animate-gradientMove
+        py-24
+        px-4
+        text-white
+      "
+    >
+      <div className="max-w-4xl mx-auto">
 
-        .terms-title {
-          animation: fadeInTitle 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 10% cover 30%;
-        }
+        {/* Card */}
+        <div className="bg-gray-900 border border-gray-700 rounded-3xl shadow-2xl p-8 md:p-12">
 
-        .terms-section {
-          animation: fadeSlideUp 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 30% cover 60%;
-        }
-
-        @keyframes fadeInTitle {
-          from { opacity: 0; transform: scale(0.9); }
-          to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes fadeSlideUp {
-          from { opacity: 0; transform: translateY(32px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .term-list li {
-          margin-bottom: 0.5rem;
-        }
-      `}</style>
-
-      <div className="animated-bg min-h-screen py-20 px-6">
-        <div className="max-w-4xl mx-auto bg-white/90 p-10 rounded-2xl shadow-xl border border-gray-300">
-
-          <h1 className="terms-title text-4xl md:text-5xl font-bold text-center mb-6 text-black">
+          {/* Title */}
+          <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-8">
             Terms & Conditions
           </h1>
 
-          <p className="text-gray-700 text-center mb-8">
-            Last updated: December 9, 2025
-            <br />
-            Please read these Terms & Conditions ("Terms", "Terms and Conditions") carefully before using the Elite Fitness website and services.
+          <p className="text-gray-400 text-center mb-12">
+            Last updated: December 9, 2025 <br />
+            Please read these Terms & Conditions carefully before using Elite
+            Fitness services.
           </p>
 
-          <div className="space-y-8">
+          {/* Content */}
+          <div className="space-y-10 text-gray-300 leading-relaxed">
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">1. Acceptance of Terms</h2>
-              <p className="text-gray-700 leading-relaxed">
-                By accessing or using Elite Fitness (the "Service"), you agree to be bound by these Terms. If you do not agree, you must not use the Service.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                1. Acceptance of Terms
+              </h2>
+              <p>
+                By accessing or using Elite Fitness, you agree to be bound by
+                these Terms. If you do not agree, you must not use the Service.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">2. Eligibility</h2>
-              <p className="text-gray-700 leading-relaxed">
-                You must be at least 13 years old to use the Service. If you are under 18, you must have parental or guardian consent to use our paid services.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                2. Eligibility
+              </h2>
+              <p>
+                You must be at least 13 years old to use the Service. Users under
+                18 must have parental or guardian consent for paid services.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">3. Accounts & Registration</h2>
-              <p className="text-gray-700 leading-relaxed">
-                When you create an account, you agree to provide accurate and complete information and to keep that information up-to-date. You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                3. Accounts & Registration
+              </h2>
+              <p>
+                You agree to provide accurate information when creating an
+                account and to keep your credentials secure. You are responsible
+                for all activity under your account.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">4. Subscriptions & Payments</h2>
-              <p className="text-gray-700 leading-relaxed">
-                Some parts of the Service are provided on a subscription basis. By subscribing, you authorize recurring charges to your chosen payment method. Prices, fees, and billing cycles are described on the pricing page. You may cancel at any time; see our refund policy for details.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                4. Subscriptions & Payments
+              </h2>
+              <p>
+                Some features require a subscription. By subscribing, you
+                authorize recurring charges. Pricing, billing cycles, and
+                cancellation details are listed on our pricing page.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">5. Refunds & Cancellations</h2>
-              <p className="text-gray-700 leading-relaxed">
-                Refunds are processed in accordance with our Refund Policy. To request cancellation or a refund, contact support at <strong>support@elitefitness.com</strong>. We reserve the right to refuse refunds in cases of abuse or fraud.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                5. Refunds & Cancellations
+              </h2>
+              <p>
+                Refunds follow our Refund Policy. To request cancellation or a
+                refund, contact{" "}
+                <strong className="text-white">
+                  support@elitefitness.com
+                </strong>.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">6. User Conduct</h2>
-              <p className="text-gray-700 leading-relaxed">
-                You agree not to:
-              </p>
-              <ul className="term-list list-disc ml-6 text-gray-700">
-                <li>Use the Service for any unlawful purpose.</li>
-                <li>Upload content that infringes copyrights, is abusive, defamatory, or obscene.</li>
-                <li>Attempt to gain unauthorized access to our systems or other users' accounts.</li>
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                6. User Conduct
+              </h2>
+              <ul className="list-disc ml-6 space-y-2">
+                <li>Do not use the Service for unlawful purposes</li>
+                <li>Do not upload abusive, illegal, or copyrighted content</li>
+                <li>Do not attempt unauthorized access to systems or accounts</li>
               </ul>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">7. Intellectual Property</h2>
-              <p className="text-gray-700 leading-relaxed">
-                All content available through the Service, including text, graphics, logos, images, and software, is owned by Elite Fitness or its licensors and protected by copyright, trademark, and other laws. You may not reproduce, distribute, or create derivative works without prior written consent.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                7. Intellectual Property
+              </h2>
+              <p>
+                All content on Elite Fitness is owned by us or our licensors and
+                protected by intellectual property laws. Unauthorized use is
+                prohibited.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">8. Third-Party Links & Integrations</h2>
-              <p className="text-gray-700 leading-relaxed">
-                The Service may contain links to third-party websites or integrate third-party services. We are not responsible for those third parties' content, privacy practices, or terms. Use of third-party services is at your own risk.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                8. Third-Party Services
+              </h2>
+              <p>
+                We may link to or integrate third-party services. Elite Fitness
+                is not responsible for their content, policies, or practices.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">9. Disclaimers & Limitation of Liability</h2>
-              <p className="text-gray-700 leading-relaxed">
-                THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. ELITE FITNESS DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY LAW, ELITE FITNESS SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING FROM YOUR USE OF THE SERVICE.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                9. Disclaimers & Liability
+              </h2>
+              <p className="uppercase text-sm tracking-wide text-gray-400">
+                The Service is provided “as is” without warranties. To the
+                maximum extent permitted by law, Elite Fitness is not liable for
+                indirect or consequential damages.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">10. Indemnification</h2>
-              <p className="text-gray-700 leading-relaxed">
-                You agree to indemnify and hold harmless Elite Fitness and its affiliates, officers, directors, employees, and agents from any claims, liabilities, damages, losses, and expenses arising out of your use of the Service or violation of these Terms.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                10. Indemnification
+              </h2>
+              <p>
+                You agree to indemnify and hold Elite Fitness harmless from any
+                claims arising from your use of the Service or violation of
+                these Terms.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">11. Termination</h2>
-              <p className="text-gray-700 leading-relaxed">
-                We may suspend or terminate your access for violations of these Terms or for any reason with or without notice. Upon termination, your right to use the Service will cease immediately.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                11. Termination
+              </h2>
+              <p>
+                We may suspend or terminate access to the Service at any time
+                for violations of these Terms or other lawful reasons.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">12. Governing Law</h2>
-              <p className="text-gray-700 leading-relaxed">
-                These Terms are governed by and construed in accordance with the laws of the jurisdiction where Elite Fitness is established, without regard to conflict of law principles. Any disputes will be resolved in the competent courts of that jurisdiction.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                12. Governing Law
+              </h2>
+              <p>
+                These Terms are governed by the laws of the jurisdiction in
+                which Elite Fitness operates.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">13. Changes to Terms</h2>
-              <p className="text-gray-700 leading-relaxed">
-                We may modify these Terms from time to time. Changes will be posted on this page with an updated "Last updated" date. Continued use of the Service after changes constitutes acceptance of the revised Terms.
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                13. Changes to Terms
+              </h2>
+              <p>
+                We may update these Terms at any time. Continued use of the
+                Service means you accept the revised Terms.
               </p>
             </section>
 
-            <section className="terms-section">
-              <h2 className="text-2xl font-semibold mb-3 text-black">14. Contact</h2>
-              <p className="text-gray-700 leading-relaxed">
-                For questions about these Terms, contact us:
-                <br /><br />
-                Email: <strong>support@elitefitness.com</strong>
-                <br />
-                Phone: <strong>+1 (555) 123-4567</strong>
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-3">
+                14. Contact Us
+              </h2>
+              <p>
+                📧 <strong>support@elitefitness.com</strong> <br />
+                📞 <strong>+1 (555) 123-4567</strong>
               </p>
             </section>
 
           </div>
-
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

@@ -1,22 +1,52 @@
 import React from "react";
-import { Dumbbell, Heart, Target, Zap, Award, Users } from 'lucide-react';
+import { Dumbbell, Heart, Target, Zap, Award, Users } from "lucide-react";
 
 function FeaturesSection() {
   const features = [
-    { icon: <Target className="w-12 h-12" />, title: 'Goal Focused', desc: 'Personalized plans tailored to your specific fitness goals' },
-    { icon: <Heart className="w-12 h-12" />, title: 'Health First', desc: 'Science-backed methods for sustainable results' },
-    { icon: <Zap className="w-12 h-12" />, title: 'High Energy', desc: 'Dynamic workouts that keep you motivated' },
-    { icon: <Award className="w-12 h-12" />, title: 'Proven Results', desc: 'Track your progress with measurable outcomes' },
-    { icon: <Users className="w-12 h-12" />, title: 'Community', desc: 'Join a supportive network of fitness enthusiasts' },
-    { icon: <Dumbbell className="w-12 h-12" />, title: 'Expert Coaches', desc: 'Learn from certified professionals' }
+    {
+      icon: <Target className="w-12 h-12" />,
+      title: "Goal Focused",
+      desc: "Personalized plans tailored to your specific fitness goals",
+    },
+    {
+      icon: <Heart className="w-12 h-12" />,
+      title: "Health First",
+      desc: "Science-backed methods for sustainable results",
+    },
+    {
+      icon: <Zap className="w-12 h-12" />,
+      title: "High Energy",
+      desc: "Dynamic workouts that keep you motivated",
+    },
+    {
+      icon: <Award className="w-12 h-12" />,
+      title: "Proven Results",
+      desc: "Track your progress with measurable outcomes",
+    },
+    {
+      icon: <Users className="w-12 h-12" />,
+      title: "Community",
+      desc: "Join a supportive network of fitness enthusiasts",
+    },
+    {
+      icon: <Dumbbell className="w-12 h-12" />,
+      title: "Expert Coaches",
+      desc: "Learn from certified professionals",
+    },
   ];
 
   return (
     <>
       <style>{`
-        .animated-bg {
-          background: linear-gradient(270deg, #ffffffff, #c8d9daff , #96b0b7ac , #4e797a);
-          background-size: 800% 800%;
+        .features-bg {
+          background: linear-gradient(
+            270deg,
+            #000000,
+            #0f1115,
+            #111827,
+            #000000
+          );
+          background-size: 600% 600%;
           animation: gradientMove 20s ease infinite;
         }
 
@@ -25,60 +55,80 @@ function FeaturesSection() {
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-
+        
         .feature-card {
           animation: cardSlideUp 1ms ease-out both;
           animation-timeline: view();
           animation-range: entry 20% cover 40%;
         }
 
-        @keyframes cardSlideUp {
-          from { opacity: 0; transform: translateY(100px) scale(0.9); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
+        /* PURE CSS ANIMATIONS */
+        .feature-card {
+          opacity: 0;
+          transform: translateY(40px);
+          animation: fadeUp 0.8s ease forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         .feature-icon {
-          animation: iconRotate 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 30% cover 60%;
+          animation: iconPop 0.6s ease forwards;
         }
 
-        @keyframes iconRotate {
-          from { transform: rotate(-180deg) scale(0); opacity: 0; }
-          to { transform: rotate(0deg) scale(1); opacity: 1; }
+        @keyframes iconPop {
+          from {
+            transform: scale(0.6);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
         }
 
         .feature-card:hover {
-          transform: translateY(-10px);
-          transition: transform 0.3s;
-        }
-
-        .section-title {
-          animation: titleFadeIn 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 10% cover 30%;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes titleFadeIn {
-          from { opacity: 0; transform: translateY(-30px); }
-          to { opacity: 1; transform: translateY(0); }
+          transform: translateY(-10px) scale(1.02);
+          transition: 0.3s ease;
         }
       `}</style>
 
-      <section className="py-24 px-4 animated-bg">
+      <section className="features-bg py-28 px-4 text-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="section-title text-5xl text-center mb-16 gradient-text">
-            Why Choose Us
+          {/* TITLE */}
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16">
+            Why Choose <span className="text-red-500">Us</span>
           </h2>
+
+          {/* FEATURES GRID */}
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, idx) => (
-              <div key={idx} className="feature-card bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-purple-500 transition-all duration-300">
-                <div className="feature-icon text-purple-500 mb-4">
+              <div
+                key={idx}
+                className="feature-card bg-black/70 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-red-500/60 transition"
+              >
+                <div className="feature-icon text-red-500 mb-5">
                   {feature.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-gray-400">{feature.desc}</p>
+
+                <h3 className="text-xl font-bold mb-3">
+                  {feature.title}
+                </h3>
+
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {feature.desc}
+                </p>
               </div>
             ))}
           </div>

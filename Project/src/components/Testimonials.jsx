@@ -1,120 +1,103 @@
+import React from "react";
+
 function Testimonials() {
   const testimonials = [
-    { 
-      name: 'Sarah Johnson',
-      role: 'Lost 30 lbs',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-      text: 'This program changed my life completely. The trainers are amazing and the community support is unmatched.' 
+    {
+      name: "Sarah Johnson",
+      role: "Lost 30 lbs",
+      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+      text: "This program changed my life completely. The trainers are amazing and the community support is unmatched.",
     },
-    { 
-      name: 'Mike Chen',
-      role: 'Gained 15 lbs Muscle',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-      text: 'I have tried many programs but this one actually delivered results. The nutrition guidance was game-changing.' 
+    {
+      name: "Mike Chen",
+      role: "Gained 15 lbs Muscle",
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+      text: "I have tried many programs but this one actually delivered results. The nutrition guidance was game-changing.",
     },
-    { 
-      name: 'Emma Davis',
-      role: 'Marathon Runner',
-      avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
-      text: 'The conditioning work helped me achieve my best marathon time. Highly recommend to serious athletes.' 
-    }
+    {
+      name: "Emma Davis",
+      role: "Marathon Runner",
+      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+      text: "The conditioning work helped me achieve my best marathon time. Highly recommend to serious athletes.",
+    },
   ];
 
   return (
-    <>
-      <style>{`
-        .testimonial-card {
-          animation: testimonialSlide 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 25% cover 50%;
-        }
-        .animated-bg {
-          background: linear-gradient(270deg, #ffffffff, #c8d9daff , #96b0b7ac , #4e797a);
-          background-size: 800% 800%;
-          animation: gradientMove 20s ease infinite;
-        }
+    <section
+      id="experience"
+      className="
+        relative
+        min-h-screen
+        py-28 px-6
+        bg-[linear-gradient(270deg,#000000,#0f1115,#111827,#000000)]
+        bg-600
+        animate-gradientMove
+        text-white
+        overflow-hidden
+      "
+    >
+      <div className="max-w-7xl mx-auto">
 
-        @keyframes testimonialSlide {
-          from {
-            opacity: 0;
-            transform: translateX(-100px) scale(0.8);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-          }
-        }
-
-        .testimonial-card:nth-child(1) { animation-delay: 0ms; }
-        .testimonial-card:nth-child(2) { animation-delay: 150ms; }
-        .testimonial-card:nth-child(3) { animation-delay: 300ms; }
-
-        .testimonial-card:hover {
-          transform: translateY(-10px) scale(1.03);
-          transition: all 0.3s ease;
-        }
-
-        .testimonial-title {
-          animation: testimonialTitleBounce 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 20% cover 40%;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes testimonialTitleBounce {
-          from {
-            opacity: 0;
-            transform: scale(0.5);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        .avatar {
-          animation: avatarSpin 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 30% cover 60%;
-        }
-
-        @keyframes avatarSpin {
-          from {
-            transform: rotate(-360deg) scale(0);
-          }
-          to {
-            transform: rotate(0deg) scale(1);
-          }
-        }
-      `}</style>
-
-      <section id="experience" className="animated-bg py-24 px-4 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="testimonial-title text-5xl font-bold text-center mb-16 gradient-text">
-            Success Stories
+        {/* TITLE */}
+        <div className="text-center mb-20">
+          <span className="text-sm tracking-widest uppercase text-red-500">
+            Real Results
+          </span>
+          <h2 className="mt-4 text-4xl md:text-6xl font-extrabold">
+            Success <span className="text-red-500">Stories</span>
           </h2>
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((t, idx) => (
-              <div key={idx} className="testimonial-card bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl border border-gray-700">
-                <div className="flex items-center mb-4">
+        {/* TESTIMONIAL GRID */}
+        <div className="grid md:grid-cols-3 gap-10">
+          {testimonials.map((t, idx) => (
+            <div
+              key={idx}
+              className="
+                group
+                bg-gradient-to-br from-gray-900 to-black
+                border border-white/10
+                p-8 rounded-3xl
+                shadow-xl
+                transition-all duration-500
+                hover:-translate-y-3 hover:scale-[1.03]
+                hover:border-red-500/40
+              "
+            >
+              {/* AVATAR */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-red-500/20 blur-xl rounded-full" />
                   <img
                     src={t.avatar}
                     alt={t.name}
-                    className="avatar w-12 h-12 rounded-full object-cover mr-4"
+                    className="
+                      relative
+                      w-14 h-14
+                      rounded-full
+                      object-cover
+                      ring-2 ring-white/20
+                      group-hover:ring-red-500
+                      transition
+                    "
                   />
-                  <div>
-                    <div className="font-bold">{t.name}</div>
-                    <div className="text-sm text-purple-400">{t.role}</div>
-                  </div>
                 </div>
-                <p className="text-gray-300">{t.text}</p>
+
+                <div>
+                  <h4 className="font-bold text-lg">{t.name}</h4>
+                  <p className="text-sm text-red-500">{t.role}</p>
+                </div>
               </div>
-            ))}
-          </div>
+
+              {/* TEXT */}
+              <p className="text-gray-400 leading-relaxed">
+                “{t.text}”
+              </p>
+            </div>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 

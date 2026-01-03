@@ -1,114 +1,140 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 function PricingSection() {
   const plans = [
-    { name: 'Basic', price: '29', features: ['3 Workouts/Week', 'Basic Nutrition Guide', 'Community Access' , 'Basic Support'] },
-    { name: 'Pro', price: '59', features: ['Unlimited Workouts', 'Personal Coach', 'Custom Meal Plans', 'Priority Support'], popular: true },
-    { name: 'Elite', price: '99', features: ['Everything in Pro', '1-on-1 Training', 'Recovery Sessions', 'Supplement Guide'] }
+    {
+      name: "Basic",
+      price: "29",
+      features: [
+        "3 Workouts / Week",
+        "Basic Nutrition Guide",
+        "Community Access",
+        "Basic Support",
+      ],
+    },
+    {
+      name: "Pro",
+      price: "59",
+      features: [
+        "Unlimited Workouts",
+        "Personal Coach",
+        "Custom Meal Plans",
+        "Priority Support",
+      ],
+      popular: true,
+    },
+    {
+      name: "Elite",
+      price: "99",
+      features: [
+        "Everything in Pro",
+        "1-on-1 Training",
+        "Recovery Sessions",
+        "Supplement Guide",
+      ],
+    },
   ];
 
   return (
     <>
       <style>{`
-
-        .pricing{
-          background: linear-gradient(270deg, #ffffffff, #c8d9daff , #96b0b7ac , #4e797a);
-          background-size: 800% 800%;
+        /* DARK ONLY – NO WHITE */
+        .pricing-bg {
+          background: linear-gradient(
+            270deg,
+            #000000,
+            #0f1115,
+            #111827,
+            #000000
+          );
+          background-size: 600% 600%;
           animation: gradientMove 20s ease infinite;
         }
+
+        @keyframes gradientMove {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        /* SIMPLE FADE-UP (NO GSAP) */
         .pricing-card {
-          animation: pricingFloat 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 20% cover 45%;
+          opacity: 0;
+          transform: translateY(40px);
+          animation: fadeUp 0.8s ease forwards;
         }
 
-        .pricing-card:nth-child(1) { 
-          animation-delay: 0ms;
-        }
-        .pricing-card:nth-child(2) { 
-          animation-delay: 150ms;
-        }
-        .pricing-card:nth-child(3) { 
-          animation-delay: 300ms;
-        }
+        .pricing-card:nth-child(1) { animation-delay: 0.1s; }
+        .pricing-card:nth-child(2) { animation-delay: 0.25s; }
+        .pricing-card:nth-child(3) { animation-delay: 0.4s; }
 
-        @keyframes pricingFloat {
-          from {
-            opacity: 0;
-            transform: translateY(80px) rotate(-5deg);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) rotate(0deg);
-          }
-        }
-
-        .pricing-card:hover {
-          transform: translateY(-15px) scale(1.02);
-          transition: all 0.3s ease;
-        }
-
-        .pricing-title {
-          animation: pricingTitleSlide 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 15% cover 35%;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes pricingTitleSlide {
-          from {
-            opacity: 0;
-            transform: translateY(-40px);
-          }
+        @keyframes fadeUp {
           to {
             opacity: 1;
             transform: translateY(0);
           }
         }
 
-        .popular-badge {
-          animation: badgePulse 2s ease-in-out infinite;
-        }
-
-        @keyframes badgePulse {
-          0%, 100% {
-            transform: translateX(-50%) scale(1);
-          }
-          50% {
-            transform: translateX(-50%) scale(1.05);
-          }
+        .pricing-card:hover {
+          transform: translateY(-10px) scale(1.02);
+          transition: 0.3s ease;
         }
       `}</style>
 
-      <section id="plan" className="pricing py-24 px-4 bg-gray-950">
+      <section id="plan" className="pricing-bg py-28 px-4 text-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="pricing-title text-5xl font-bold text-center mb-16 gradient-text">
-            Choose Your Plan
+          {/* TITLE */}
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16">
+            Choose Your <span className="text-red-500">Plan</span>
           </h2>
+
+          {/* PRICING GRID */}
           <div className="grid md:grid-cols-3 gap-8">
             {plans.map((plan, idx) => (
-              <div key={idx} className={`pricing-card bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border-2 ${plan.popular ? 'border-purple-500 scale-105' : 'border-gray-700'} relative`}>
+              <div
+                key={idx}
+                className={`pricing-card bg-black/70 backdrop-blur-lg p-8 rounded-2xl border ${plan.popular
+                  ? "border-red-500 scale-105"
+                  : "border-white/10"
+                  }`}
+              >
+                {/* POPULAR TAG */}
                 {plan.popular && (
-                  <div className="popular-badge absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-2 rounded-full text-sm font-bold">
+                  <span className="inline-block mb-4 text-xs font-semibold tracking-widest text-red-500">
                     MOST POPULAR
-                  </div>
+                  </span>
                 )}
+
                 <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
+
                 <div className="mb-6">
-                  <span className="text-5xl font-bold text-purple-500">${plan.price}</span>
-                  <span className="text-gray-400">/month</span>
+                  <span className="text-5xl font-bold text-red-500">
+                    ${plan.price}
+                  </span>
+                  <span className="text-gray-400"> / month</span>
                 </div>
+
                 <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-center text-gray-300">
-                      <div className="w-5 h-5 rounded-full bg-purple-500/20 flex items-center justify-center mr-3">
-                        <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-                      </div>
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-center text-gray-300 text-sm">
+                      <span className="w-2 h-2 rounded-full bg-red-500 mr-3" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <button className={`w-full py-3 rounded-lg font-semibold transition-all ${plan.popular ? 'bg-gradient-to-r from-purple-600 to-blue-600 hover:scale-105' : 'bg-gray-700 hover:bg-gray-600'}`}>
-                  Get Started
-                </button>
+                <Link to="/getstarted">
+                  <button
+                    className={`w-full py-3 tracking-widest transition ${plan.popular
+                      ? "bg-red-500 hover:bg-red-600"
+                      : "bg-white/10 hover:bg-white/20"
+                      }`}
+                  >
+
+                    Get Started
+
+                  </button>
+                </Link>
               </div>
             ))}
           </div>

@@ -1,131 +1,89 @@
-import React from 'react';
-import workout from '../assets/g2.jpg';
+import React from "react";
+import { Link } from "react-router-dom";
+import workout from "../assets/g2.jpg";
 
+const skills = [
+  { title: "Strength Training", value: 90 },
+  { title: "Cardio Performance", value: 85 },
+  { title: "Mobility & Flexibility", value: 80 },
+];
 
 function WorkoutSection() {
-  const skills = ['Strength Building', 'Cardio Conditioning', 'Flexibility Training'];
-
   return (
-    <>
-      <style>{`
-        @property --progress {
-          syntax: "<number>";
-          inherits: true;
-          initial-value: 0;
-        }
+    <section
+      className="
+        relative
+        min-h-screen
+        py-28 px-6
+        bg-[linear-gradient(270deg,#000000,#0f1115,#111827,#000000)]
+        bg-600
+        animate-gradientMove
+        text-white
+        overflow-hidden
+      "
+    >
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
-        .animated-bg {
-          background: linear-gradient(270deg, #ffffffff, #c8d9daff , #96b0b7ac , #4e797a);
-          background-size: 800% 800%;
-          animation: gradientMove 20s ease infinite;
-        }
+        {/* LEFT CONTENT */}
+        <div>
+          <span className="inline-block mb-4 text-sm tracking-widest uppercase text-red-500">
+            Elite Training
+          </span>
 
-        .section-title {
-          animation: titleFadeIn 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 10% cover 30%;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .workout-image {
-          animation: imageZoom 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 20% cover 50%;
-        }
+          <h2 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+            Train Smarter. <br />
+            <span className="text-red-500">Get Stronger.</span>
+          </h2>
 
-        @keyframes imageZoom {
-          from {
-            transform: scale(1.3) rotate(-5deg);
-            filter: brightness(0.5);
-            opacity: 0;
-          }
-          to {
-            transform: scale(1) rotate(0deg);
-            filter: brightness(1);
-            opacity: 1;
-          }
-        }
+          <p className="text-gray-400 text-lg max-w-xl mb-10 leading-relaxed">
+            Our structured workout systems are designed to maximize strength,
+            endurance, and flexibility—helping you achieve peak performance
+            without burnout.
+          </p>
 
-        .split-reveal {
-          animation: splitReveal 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 20% cover 50%;
-        }
-
-        @keyframes splitReveal {
-          from {
-            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-          }
-          to {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-          }
-        }
-
-        .progress-bar {
-          animation: progressFill 1ms linear forwards;
-          animation-timeline: view();
-          animation-range: entry 40% cover 70%;
-        }
-
-        @keyframes progressFill {
-          from {
-            --progress: 0;
-          }
-          to {
-            --progress: 1;
-          }
-        }
-
-        .workout-content {
-          animation: contentSlide 1ms ease-out both;
-          animation-timeline: view();
-          animation-range: entry 25% cover 55%;
-        }
-
-        @keyframes contentSlide {
-          from {
-            opacity: 0;
-            transform: translateX(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-      `}</style>
-
-      <section className="animated-bg py-24 px-4 bg-gray-900">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="split-reveal">
-            <div className="workout-image bg-gradient-to-br from-purple-600 to-blue-600 h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <div className="w-full h-full flex items-center justify-center">
-                <img src={workout} alt="Workout" />
-              </div>
-            </div>
-          </div>
-          <div className="workout-content">
-            <h2 className="section-title text-4xl font-bold mb-6 gradient-text">
-              Experience Elite Training
-            </h2>
-            <p className="text-gray-900 text-lg mb-6">
-              Our comprehensive programs combine strength training, cardio, and flexibility work to deliver complete fitness transformation.
-            </p>
-            <div className="space-y-4">
-              {skills.map((item, idx) => (
-                <div key={idx} className="progress-bar">
-                  <div className="text-gray-900 mb-2 font-semibold">{item}</div>
-                  <div className="bg-gray-800 h-3 rounded-full overflow-hidden">
-                    <div 
-                      className="bg-gradient-to-r from-purple-600 to-blue-600 h-full rounded-full transition-all duration-1000"
-                      style={{ width: `calc(var(--progress) * ${85 + idx * 5}%)` }}
-                    ></div>
-                  </div>
+          {/* SKILLS */}
+          <div className="space-y-6 max-w-lg">
+            {skills.map((skill, idx) => (
+              <div key={idx}>
+                <div className="flex justify-between mb-2 text-sm font-semibold">
+                  <span>{skill.title}</span>
+                  <span className="text-gray-500">{skill.value}%</span>
                 </div>
-              ))}
-            </div>
+
+                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-red-500 to-red-700 rounded-full transition-all duration-1000"
+                    style={{ width: `${skill.value}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-12 flex gap-4 flex-wrap">
+            <Link to="/getstarted" >
+            <button className="px-8 py-4 bg-red-500 hover:bg-red-600 transition font-semibold tracking-wide uppercase">
+              Start Training
+            </button></Link>
           </div>
         </div>
-      </section>
-    </>
+
+        {/* RIGHT IMAGE */}
+        <div className="relative">
+          <div className="absolute -inset-4 bg-red-500/10 blur-3xl rounded-full" />
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src={workout}
+              alt="Workout Training"
+              className="w-full h-[480px] object-cover hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+        </div>
+
+      </div>
+    </section>
   );
 }
 
